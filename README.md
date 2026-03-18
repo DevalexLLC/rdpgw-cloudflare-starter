@@ -38,7 +38,7 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 ### Environment Variables
 
 1. Copy [.env.example](/.env.example) to `.env`
-2. Set your temporary admin credentials for Keycloak
+2. Set your bootstrap admin credentials for Keycloak
 3. Set `SERVER_HOSTNAME` to the hostname from [Cloudflare Tunnel step #6](#cloudflare-tunnel)
 4. Set `RDP_HOSTNAME` to the hostname of your Windows computer
 
@@ -52,12 +52,12 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 
 ### Add Keycloak User
 
-1. Go to `https://SERVER_HOSTNAME/auth/admin/master/console` and log in with your Keycloak bootstrap credentials
+1. Go to `https://SERVER_HOSTNAME/auth/admin/master/console` and log in with your Keycloak bootstrap admin credentials
 2. Click 'Manage realms'
 3. Click 'rdpgw'
 4. Click 'Users'
 5. Click 'Create new user' to add your first user
-6. Fill in your username (for convenience, use your Windows username; you get get it with `$env:USERNAME` in PowerShell) and click 'Create'
+6. Fill in your username (for convenience, use your Windows username; you can get it with `$env:USERNAME` in PowerShell) and click 'Create'
 7. Click on your user
 8. Click 'Credentials'
 9. Click 'Set password'
