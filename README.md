@@ -7,7 +7,7 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 - A domain hosted on Cloudflare
 - A computer or VM with Docker and Docker Compose installed
     - Must be on a separate computer (not the Windows computer you are accessing remotely)
-    - I will refer to this computer your Gateway
+    - We will refer to this computer your Gateway
 
 ## Installation and Setup
 
@@ -22,22 +22,22 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 3. Choose 'Cloudflared'
 4. Name your tunnel
 5. Follow the instructions to install and run the connector on your Gateway
-6. Pick your Hostname e.g., gateway.example.com
+6. Pick your Hostname e.g., `gateway.example.com`; this will be your `SERVER_HOSTNAME`
 7. Use `https://localhost:443` for the Service and click 'Complete Setup'
 
-> [!NOTE]
-> You can return to Cloudflare One at any time to manage your tunnels. You can also see your tunnels as DNS records in your regular Cloudflare Dashboard.
+> [!TIP]
+> You can see your tunnels as DNS records in your regular Cloudflare Dashboard.
 
 ### Cloudflare Origin Certs
 
 1. Go to your [Cloudflare Dashboard](https://dash.cloudflare.com), and select your domain
-2. Go to 'SSL/TLS' (search for SSL if you need to), then click 'Origin Server' > 'Create Certificate'
+2. Go to 'SSL/TLS' (use the search bar for SSL if you need to), then click 'Origin Server' > 'Create Certificate'
 3. Accept the defaults and click 'Create'
-4. Copy both the Certificate as `cloudflare.pem` and the Key as `cloudflare.key`; place them in the [certs](/gateway/certs/) folder
+4. Copy both the Certificate as `cloudflare.pem` and the Key as `cloudflare.key`; place them in the [certs](/certs/) folder
 
 ### Environment Variables
 
-1. Copy [.env.example](/gateway/.env.example) to `.env`
+1. Copy [.env.example](/.env.example) to `.env`
 2. Set your temporary admin credentials for Keycloak
 3. Set `SERVER_HOSTNAME` to the hostname from [Cloudflare Tunnel step #6](#cloudflare-tunnel)
 4. Set `RDP_HOSTNAME` to the hostname of your Windows computer
@@ -46,13 +46,13 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 
 1. You should have the following tasks complete:
     - [x] A working cloudflare tunnel
-    - [x] Cloudflare cert and key saved to the [certs](/gateway/certs/) folder
+    - [x] Cloudflare cert and key saved to the [certs](/certs/) folder
     - [x] Your own `.env` file configured
 2. Once those are all done, run `docker compose up -d` to start the Gateway
 
 ### Add Keycloak User
 
-1. Go to `https://{SERVER_HOSTNAME}/auth/admin/master/console` and log in with your Keycloak bootstrap credentials
+1. Go to `https://SERVER_HOSTNAME/auth/admin/master/console` and log in with your Keycloak bootstrap credentials
 2. Click 'Manage realms'
 3. Click 'rdpgw'
 4. Click 'Users'
@@ -65,8 +65,8 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 
 ### Download Your RDP File
 
-Now that your user is created, you can navigate to `https://{SERVER_HOSTNAME}` and log in with your new user. The RDP file will automatically download once you are authenticated.
+Now that your user is created, you can navigate to `https://SERVER_HOSTNAME` and log in with your new user. The RDP file will automatically download once you are authenticated.
 
 ## Customizing your RDP session
 
-The default RDP template has been customized for speed and simplicity. You can edit the options in [default.rdp](/gateway/rdpgw/default.rdp) to your liking. A good reference for the options is available at https://www.donkz.nl/overview-rdp-file-settings/.
+The default RDP template has been customized for speed and simplicity. You can edit the options in [default.rdp](/rdpgw/default.rdp) to your liking. A good reference for the options is available at https://www.donkz.nl/overview-rdp-file-settings/. Be sure to rebuild the `rdpgw` container after you make any changes.
