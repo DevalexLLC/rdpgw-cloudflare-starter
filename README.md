@@ -1,6 +1,6 @@
 # rdpgw-cloudflare-starter
 
-Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdpgw).
+Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdpgw) by integrating with Keycloak, NGINX, and Cloudflare Tunnels.
 
 ## Prerequesites
 
