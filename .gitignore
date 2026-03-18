@@ -1,0 +1,3 @@
+certs/cloudflare.pem
+certs/cloudflare.key
+.env
