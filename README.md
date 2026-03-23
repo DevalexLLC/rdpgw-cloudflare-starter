@@ -23,7 +23,9 @@ Making it easier to get started with [rdpgw](https://github.com/bolkedebruin/rdp
 4. Name your tunnel
 5. Follow the instructions to install and run the connector on your Gateway
 6. Pick your Hostname e.g., `gateway.example.com`; this will be your `SERVER_HOSTNAME`
-7. Use `https://localhost:443` for the Service and click 'Complete Setup'
+7. Use `https://localhost:443` for the Service
+8. Expand 'Additonal application settings' > 'TLS' > and set the 'No TLS Verify' to 'ON'
+9. Save
 
 > [!TIP]
 > You can see your tunnels as DNS records in your regular Cloudflare Dashboard.
